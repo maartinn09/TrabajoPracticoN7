@@ -5,6 +5,10 @@
  */
 package blascomatiasmartin_tp7;
 
+
+import java.util.HashSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author M
@@ -16,6 +20,7 @@ public class VistaFormInscripcion extends javax.swing.JInternalFrame {
      */
     public VistaFormInscripcion() {
         initComponents();
+        llenarItems();
     }
 
     /**
@@ -30,31 +35,20 @@ public class VistaFormInscripcion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jcomboMateria = new javax.swing.JComboBox<>();
-        jcomboAlumno = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jcMaterias = new javax.swing.JComboBox<>();
+        jcAlumnos = new javax.swing.JComboBox<>();
+
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 204, 255));
         jLabel1.setText("Formulario de Inscripcion");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel2.setText("ELIJA UNA MATERIA:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel3.setText("ELIJA UN ALUMNO:");
-
-        jcomboMateria.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jcomboMateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingles I", "Matematicas I", "Laboratorio I" }));
-        jcomboMateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcomboMateriaActionPerformed(evt);
-            }
-        });
-
-        jcomboAlumno.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jcomboAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lopez Martin", "Martinez Brenda" }));
 
         jButton1.setText("Inscribir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,72 +57,82 @@ public class VistaFormInscripcion extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Salir");
+        jcMaterias.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+
+        jcAlumnos.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(75, 75, 75)
+                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcomboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcomboMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(12, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(12, 12, 12))
+                            .addComponent(jcMaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jcAlumnos, 0, 232, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jcomboMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jcomboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jLabel3)
+                    .addComponent(jcAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcomboMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboMateriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcomboMateriaActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Alumno a1 = (Alumno) jcAlumnos.getSelectedItem();
+        Materia m1 = (Materia) jcMaterias.getSelectedItem();
+        
+        a1.agregarMateria(m1);
+        JOptionPane.showMessageDialog(this,"Alumno Inscripto");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    private void llenarItems(){
+        HashSet<Alumno> alumnos = Menu.getAlumnos();
+        
+        for(Alumno u : alumnos){
+            jcAlumnos.addItem(u);
+        }
+        
+        HashSet<Materia> materias = Menu.getMaterias();
+        
+        for(Materia k : materias){
+            jcMaterias.addItem(k);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox<String> jcomboAlumno;
-    private javax.swing.JComboBox<String> jcomboMateria;
+    private javax.swing.JComboBox<Alumno> jcAlumnos;
+    private javax.swing.JComboBox<Materia> jcMaterias;
     // End of variables declaration//GEN-END:variables
 }

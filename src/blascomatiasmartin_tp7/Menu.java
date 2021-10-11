@@ -5,12 +5,15 @@
  */
 package blascomatiasmartin_tp7;
 
+import java.util.HashSet;
+
 /**
  *
  * @author M
  */
 public class Menu extends javax.swing.JFrame {
-
+    private static HashSet<Alumno> alumnos = new HashSet<>();
+    private static HashSet<Materia> materias = new HashSet<>();
     /**
      * Creates new form Menu
      */
@@ -34,6 +37,8 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,11 +47,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
+            .addGap(0, 576, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
+            .addGap(0, 476, Short.MAX_VALUE)
         );
 
         jmenuSalir.setText("SALIR");
@@ -80,6 +85,18 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jmenuEscuela);
 
+        jMenu1.setText("Materias");
+
+        jMenuItem4.setText("Materias Inscriptas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
+
         jMenu3.setText("Ayuda");
         jMenuBar1.add(jMenu3);
 
@@ -98,7 +115,7 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
@@ -125,6 +142,15 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(v3);
         escritorio.moveToFront(v3);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMostrarAlumnos v4 =new VistaMostrarAlumnos();
+        v4.setVisible(true);
+        escritorio.add(v4);
+        escritorio.moveToFront(v4);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,14 +186,33 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static boolean agregarAlumnos1(Alumno a){
+        return alumnos.add(a);
+    }
+
+    public static HashSet<Alumno> getAlumnos() {
+        return alumnos;
+    }
+    public static boolean agregarMaterias1(Materia m){
+        return materias.add(m);
+    }
+
+    public static HashSet<Materia> getMaterias() {
+        return materias;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu jmenuEscuela;
     private javax.swing.JMenu jmenuSalir;
     // End of variables declaration//GEN-END:variables

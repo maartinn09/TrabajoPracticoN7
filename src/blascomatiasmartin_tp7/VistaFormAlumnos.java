@@ -5,6 +5,8 @@
  */
 package blascomatiasmartin_tp7;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author M
@@ -31,45 +33,42 @@ public class VistaFormAlumnos extends javax.swing.JInternalFrame {
         legajoAlum = new javax.swing.JLabel();
         apellidoAlum = new javax.swing.JLabel();
         nombreAlum = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jtLegajo = new javax.swing.JTextField();
+        jtApellido = new javax.swing.JTextField();
+        jtNombre = new javax.swing.JTextField();
         guardarA = new javax.swing.JButton();
-        nuevoA = new javax.swing.JButton();
-        salirA = new javax.swing.JButton();
+
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 204, 255));
         jLabel1.setText("Formulario de Alumnos");
 
-        legajoAlum.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        legajoAlum.setForeground(new java.awt.Color(51, 204, 255));
+        legajoAlum.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         legajoAlum.setText("LEGAJO:");
 
-        apellidoAlum.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        apellidoAlum.setForeground(new java.awt.Color(51, 204, 255));
+        apellidoAlum.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         apellidoAlum.setText("APELLIDO:");
 
-        nombreAlum.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        nombreAlum.setForeground(new java.awt.Color(51, 204, 255));
+        nombreAlum.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         nombreAlum.setText("NOMBRE:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jtLegajo.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jtLegajo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtLegajoFocusLost(evt);
             }
         });
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jtApellido.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jtNombre.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         guardarA.setText("Guardar");
-
-        nuevoA.setText("Nuevo");
-
-        salirA.setText("Salir");
+        guardarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,30 +77,24 @@ public class VistaFormAlumnos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(legajoAlum)
-                                    .addComponent(apellidoAlum)
-                                    .addComponent(nombreAlum))
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 49, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(guardarA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nuevoA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(salirA)))
-                .addContainerGap())
+                            .addComponent(legajoAlum)
+                            .addComponent(apellidoAlum)
+                            .addComponent(nombreAlum))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                            .addComponent(jtApellido)
+                            .addComponent(jtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(guardarA)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,41 +103,62 @@ public class VistaFormAlumnos extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(legajoAlum)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidoAlum)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreAlum)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardarA)
-                    .addComponent(nuevoA)
-                    .addComponent(salirA))
+                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(guardarA)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void guardarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAActionPerformed
+        int legajo=Integer.parseInt(jtLegajo.getText());
+        String nombre = jtNombre.getText();
+        String apellido = jtApellido.getText();
+        
+        Alumno a1 = new Alumno(legajo, nombre, apellido);
+        
+        //guardo
+        if(Menu.agregarAlumnos1(a1)){
+            
+            JOptionPane.showMessageDialog(this,"Alumno Agregado");
+        }
+        
+        limpiar();
+    }//GEN-LAST:event_guardarAActionPerformed
 
+    private void jtLegajoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtLegajoFocusLost
+        try{
+            int x=Integer.parseInt(jtLegajo.getText());
+        }catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(this,"No es un numero valido");
+            jtLegajo.requestFocus();
+        }
+    }//GEN-LAST:event_jtLegajoFocusLost
+
+    private void limpiar(){
+        jtLegajo.setText("");
+        jtNombre.setText("");
+        jtApellido.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoAlum;
     private javax.swing.JButton guardarA;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtLegajo;
+    private javax.swing.JTextField jtNombre;
     private javax.swing.JLabel legajoAlum;
     private javax.swing.JLabel nombreAlum;
-    private javax.swing.JButton nuevoA;
-    private javax.swing.JButton salirA;
     // End of variables declaration//GEN-END:variables
 }

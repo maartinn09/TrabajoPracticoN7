@@ -5,6 +5,7 @@
  */
 package blascomatiasmartin_tp7;
 
+
 import java.util.HashSet;
 
 /**
@@ -16,7 +17,7 @@ public class Alumno {
     private String apellido;
     private String nombre;
     
-    HashSet<Materia> materias = new HashSet<>();
+    private HashSet<Materia> materias = new HashSet<>();
 
     public Alumno(int legajo, String apellido, String nombre) {
         this.legajo = legajo;
@@ -47,12 +48,23 @@ public class Alumno {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public void agregarMateria(Materia m){
-        materias.add(m);
+
+    public  HashSet<Materia> getMaterias() {
+        return materias;
+    }
+
+    public  boolean agregarMateria(Materia m){
+       return materias.add(m);
     }
     
     public int cantidadMaterias(){
         return materias.size();
     }
+
+    @Override
+    public String toString() {
+        return apellido + ", " + nombre ;
+    }
+    
+    
 }
